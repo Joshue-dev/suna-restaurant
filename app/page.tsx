@@ -1,4 +1,5 @@
 import { Footer } from "@/components/page-layout/footer";
+import {Header} from "@/components/page-layout/header";
 import CareersSection from "@/page-components/careers";
 import Description from "@/page-components/description";
 import HeroSection from "@/page-components/heroSection";
@@ -8,6 +9,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
+      <Header />
       <HeroSection/>
       <Description />
       <Reservation/>
