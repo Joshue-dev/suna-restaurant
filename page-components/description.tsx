@@ -16,7 +16,7 @@ const Description = () => {
       </div>
 
       {/* Polaroid Photo Gallery */}
-      <div className="flex flex-wrap justify-center gap-6 px-6 max-w-7xl mx-auto">
+      <div data-cursor='drag' className="flex flex-wrap justify-center gap-6 px-6 max-w-7xl mx-auto">
         {[
           { src: "/bramble-photo1.png", alt: "DJ at turntables" },
           { src: "/bramble-photo2.png", alt: "Bartender at work" },

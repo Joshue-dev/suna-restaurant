@@ -1,3 +1,4 @@
+import Cursor from "@/components/cursor";
 import { Footer } from "@/components/page-layout/footer";
 import {Header} from "@/components/page-layout/header";
 import CareersSection from "@/page-components/careers";
@@ -9,6 +10,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
+      <Cursor />
       <Header />
       <HeroSection/>
       <Description />
