@@ -1,10 +1,9 @@
 "use client";
-import { animate, AnimatePresence, motion, useMotionValue } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { forwardRef, useEffect, useState } from "react";
 
 const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
   const [index, setIndex] = useState(0);
-  const count = useMotionValue(0);
   const images = [
     "/images/background-1.jpeg",
     "/images/background-2.jpeg",
@@ -12,23 +11,20 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
   ];
 
   useEffect(() => {
-    const controls = animate(count, images.length - 1, {
-      duration: images.length, // 1 second per image
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "loop",
-      onUpdate(v) {
-        setIndex(Math.round(v));
-      },
-    });
-    return () => controls.stop();
-  }, [count]);
-
-  useEffect(() => {
     images.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
+
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % images.length;
+        console.log(`Transitioning from ${prevIndex} to ${nextIndex}`); // Debug log
+        return nextIndex;
+      });
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
