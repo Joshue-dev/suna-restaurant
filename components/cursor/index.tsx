@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: -10, y: -10 });
   const [cursorText, setCursorText] = useState("");
 
   useEffect(() => {

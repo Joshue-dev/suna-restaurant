@@ -10,7 +10,7 @@ const CareersSection = () => {
             <h3 className="heading text-2xl md:text-3xl font-light mb-1 tracking-wider">
               BEACH
             </h3>
-            <p className="text-base leading-tight tracking-tight mb-8 max-w-md mx-auto lg:mx-0">
+            <p className="text-base leading-relaxed tracking-tight mb-8 max-w-md mx-auto lg:mx-0">
               Don’t miss the opportunity to enjoy a day of relaxation on our
               delightful beach, basking in the warm rays of the sun while
               lounging on comfortable sun loungers and savoring the moment of
@@ -32,7 +32,7 @@ const CareersSection = () => {
             <h3 className="heading text-2xl md:text-3xl font-light mb-1 tracking-tight uppercase">
               Private party
             </h3>
-            <p className="tracking-tighter leading-tight text-base mb-8 max-w-md mx-auto lg:mx-0">
+            <p className="tracking-tighter leading-\ text-base mb-8 max-w-md mx-auto lg:mx-0">
               Experience luxury and seclusion awaits your party in our private
               VIP area with exclusive loungers and relaxation zones. Immerse
               yourself in an atmosphere of comfort and superiority, enjoying

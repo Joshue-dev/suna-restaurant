@@ -55,12 +55,12 @@ const Description = () => {
       data-bg="change"
     >
       <div className="max-w-5xl mx-auto px-6 text-center mb-16">
-        <h2 className="text-xl md:text-3xl xl:text-4xl heading uppercase font-medium">
+        <h2 className="text-2xl md:text-3xl xl:text-4xl heading uppercase font-medium">
           With Suna's beach as your backdrop, you can take in the stunning
           scenery of the Mediterranean and the surrounding mountains.
         </h2>
 
-        <p className="text-md font-light tracking-tighter px-6 md:px-40">
+        <p className="text-sm md:text-base font-light tracking-tighter px-6 md:px-40">
           Come and see for yourself why Suna’s Beach is the perfect getaway for
           you, your friends, and your family. We guarantee that you’ll have an
           unforgettable time!
