@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 const Reservation = () => {
   return (
-    <div className="relative bg-amber-50 py-16 md:py-24">
+    <div className="relative bg-amber-50 py-16 md:py-24" id='opening-times'>
       {/* Repeating Header Text */}
       <div className="absolute top-10 left-0 right-0 overflow-hidden">
         <motion.div
@@ -24,13 +24,13 @@ const Reservation = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center">
           {/* Left Cocktail Image */}
           <div className="flex justify-center lg:justify-end">
             <img
-              src="/cocktail-martini.png"
-              alt="Elegant martini cocktail"
-              className="w-64 h-80 object-cover"
+              src="/images/mocktail.png"
+              alt="Elegant red cocktail"
+              className="size-72 object-cover object-bottom-right"
             />
           </div>
 
@@ -50,11 +50,11 @@ const Reservation = () => {
           </div>
 
           {/* Right Cocktail Images */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-center lg:justify-start lg:mb-10">
             <img
-              src="/cocktail-red.png"
+              src="/images/cocktail.png"
               alt="Red cocktails"
-              className="w-64 h-64 object-cover"
+              className="size-44 object-cover transform -rotate-45"
             />
           </div>
         </div>

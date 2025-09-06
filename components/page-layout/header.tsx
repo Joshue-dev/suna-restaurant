@@ -1,11 +1,9 @@
 "use client";
 import { Fragment, RefObject, useEffect, useState } from "react";
-import { Button } from "../ui/button";
 import {
   AnimatePresence,
   motion,
   useAnimation,
-  useScroll,
   Variants,
 } from "motion/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -37,8 +35,6 @@ export const Header = ({
   const [showMenu, setShowMenu] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
 
-  const { scrollY } = useScroll({ target: targetRef });
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -68,38 +64,24 @@ export const Header = ({
           height: showMenu ? "100%" : "max-content",
         }}
         transition={{ type: "keyframes", ease: "easeInOut", delay: 0.02 }}
-        className={`fixed w-full z-[9999] justify-between px-6 py-4 flex flex-col transition-colors duration-300 ${navColor}`}
+        className={`fixed w-full z-[9999] justify-between p-6 flex flex-col transition-colors duration-300 ${navColor}`}
       >
         <div className="flex items-center justify-between">
           <motion.button
             onHoverStart={() => controls.start("visible")}
             onHoverEnd={() => controls.start("hidden")}
-            className="border border-amber-50 text-amber-50 rounded-none text-lg w-32 h-12 relative cursor-pointer"
+            className="border border-amber-50 text-amber-50 rounded-none 
+            text-base w-28 h-10 relative cursor-pointer hover:bg-amber-50 
+            hover:text-black transition-colors duration-100 font-medium"
           >
             RESERVE
-            <motion.svg
-              width="128"
-              height="48"
-              viewBox="0 0 128 48"
-              className="absolute top-0 left-0 pointer-events-none"
-              initial="hidden"
-              animate={controls}
-            >
-              <motion.path
-                d="M0 48 H128 V0 H0 Z"
-                strokeWidth={2}
-                stroke="#FEE685"
-                fill="none"
-                variants={draw}
-              />
-            </motion.svg>
           </motion.button>
           <p className="uppercase max-lg:hidden text-amber-100">
             Fevzi Çakmak Sokak, Lapta 9915
           </p>
           <div
-            className="text-white 
-            flex items-center gap-1 font-medium tracking-wide text-lg relative"
+            className="text-amber-100 flex items-center 
+            gap-1 font-medium tracking-wide text-lg relative"
             onClick={() => setShowMenu(!showMenu)}
           >
             <motion.span
@@ -132,7 +114,7 @@ export const Header = ({
               animate={{ opacity: 1, rotate: 0 }}
               exit={{ opacity: 0, rotate: 180 }}
               transition={{ duration: 0.3 }}
-              // className="absolute inset-0 flex items-center justify-center"
+              className="text-amber-100"
             >
               <Icon
                 icon={
@@ -140,7 +122,7 @@ export const Header = ({
                     ? "material-symbols-light:close"
                     : "hugeicons:menu-09"
                 }
-                fontSize="24px"
+                fontSize="28px"
               />
             </motion.div>
           </div>
