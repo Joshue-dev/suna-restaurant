@@ -24,13 +24,13 @@ const Reservation = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center">
+        <div className="grid grid-cols-3 gap-2 items-center">
           {/* Left Cocktail Image */}
           <div className="flex justify-center lg:justify-end">
             <img
               src="/images/mocktail.png"
               alt="Elegant red cocktail"
-              className="size-72 object-cover object-bottom-right"
+              className="size-44 lg:size-72 object-cover object-bottom-right"
             />
           </div>
 
@@ -54,7 +54,7 @@ const Reservation = () => {
             <img
               src="/images/cocktail.png"
               alt="Red cocktails"
-              className="size-32 lg:size-44 object-cover transform -rotate-45"
+              className="size-20 lg:size-44 object-cover transform -rotate-45"
             />
           </div>
         </div>
