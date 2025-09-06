@@ -54,7 +54,7 @@ const Reservation = () => {
             <img
               src="/images/cocktail.png"
               alt="Red cocktails"
-              className="size-20 lg:size-44 object-cover transform -rotate-45"
+              className="size-20 lg:size-32 object-cover transform -rotate-45"
             />
           </div>
         </div>
