@@ -106,7 +106,7 @@ export const Header = ({
               initial={false}
               animate={{ x: 0 }}
               transition={{ duration: 0.3 }}
-              className="inline-block relative overflow-hidden"
+              className="inline-block relative overflow-hidden w-max"
             >
               <span
                 className="block transition-transform duration-300"
@@ -177,8 +177,8 @@ export const Header = ({
               })}
             </div>
             <div className="flex flex-col items-center gap-1 justify-center text-amber-100 uppercase">
-              <p>+905391190001</p>
-              <p>@sunasbeachclubrestauran</p>
+              <p>+90 533 846 10 10</p>
+              <p>@sunasbeachclubrestaurant</p>
             </div>
           </Fragment>
         )}

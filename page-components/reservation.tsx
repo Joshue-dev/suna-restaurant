@@ -37,38 +37,16 @@ const Reservation = () => {
           {/* Center - Opening Hours */}
           <div className="text-center space-y-6">
             <div>
-              <h3 className="text-zinc-800 font-medium text-lg mb-1">MONDAY</h3>
-              <p className="text-zinc-700">CLOSED</p>
-            </div>
-
-            <div>
-              <h3 className="text-zinc-800 font-medium text-lg mb-1">
-                TUESDAY - THURSDAY
+              <h3 className="text-zinc-800 font-bold text-lg mb-1">
+                MONDAY - SUNDAY
               </h3>
-              <p className="text-zinc-700">BAR: 12PM - 12PM</p>
-              <p className="text-zinc-700">KITCHEN: 6PM - 9PM</p>
+              <p className="text-zinc-700">BEACH: 10AM - 6PM</p>
+              <p className="text-zinc-700">BAR: 10AM - 10:30PM</p>
+              <p className="text-zinc-700">RESTAURANT: 8AM - 10:30PM</p>
             </div>
 
-            <div>
-              <h3 className="text-zinc-800 font-medium text-lg mb-1">FRIDAY</h3>
-              <p className="text-zinc-700">BAR: 12PM - 12PM</p>
-              <p className="text-zinc-700">LUNCH: 12PM - 3PM</p>
-              <p className="text-zinc-700">KITCHEN: 6PM - 9PM</p>
-            </div>
 
-            <div>
-              <h3 className="text-zinc-800 font-medium text-lg mb-1">
-                SATURDAY
-              </h3>
-              <p className="text-zinc-700">BAR: 12PM - 1AM</p>
-              <p className="text-zinc-700">KITCHEN: 12PM - 9PM</p>
-            </div>
 
-            <div>
-              <h3 className="text-zinc-800 font-medium text-lg mb-1">SUNDAY</h3>
-              <p className="text-zinc-700">BAR: 12PM - 7PM</p>
-              <p className="text-zinc-700">KITCHEN: 12PM - 4PM</p>
-            </div>
           </div>
 
           {/* Right Cocktail Images */}
@@ -82,7 +60,7 @@ const Reservation = () => {
         </div>
 
         {/* Reservation Button */}
-        <div className="text-center mt-12">
+        <div className="text-center">
           <Button
             variant="outline"
             className="border-1 border-zinc-800 bg-transparent text-zinc-800 hover:bg-zinc-800 
