@@ -13,7 +13,7 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
 
   useEffect(() => {
     const controls = animate(count, images.length - 1, {
-      duration: images.length * 2, // e.g. 6s to go 0→2
+      duration: 1, // e.g. 6s to go 0→2
       ease: "linear",
       repeat: Infinity,
       repeatType: "loop",
