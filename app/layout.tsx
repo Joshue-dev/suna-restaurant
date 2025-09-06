@@ -34,6 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/images/background-1.jpg" />
+        <link rel="preload" as="image" href="/images/background-2.jpg" />
+        <link rel="preload" as="image" href="/images/background-3.jpg" />
+      </head>
+
       <body
         className={`${crimsonPro.variable} ${interSans.variable} 
         ${geistSans.variable} ${geistMono.variable} antialiased`}

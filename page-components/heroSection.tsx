@@ -30,6 +30,13 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
     return () => unsubscribe();
   }, [count]);
 
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [images]);
+
   return (
     <AnimatePresence>
       <div ref={ref} className="relative min-h-[50vh] xl:min-h-screen overflow-hidden">
