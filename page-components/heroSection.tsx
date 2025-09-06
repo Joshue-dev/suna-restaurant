@@ -36,13 +36,11 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
         {/* Hero Background Image */}
         <motion.div
           key={index}
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-zinc-900"
           style={{ backgroundImage: `url('${images[index]}')` }}
           transition={{
-            duration: 1, // 1s fade
             repeat: Infinity, // loop forever
             repeatType: "mirror", // fade in → fade out
-            repeatDelay: 0.5 + index * 0, // wait 4s (plus any extra per-slide delay if you want)
           }}
         />
       </div>
