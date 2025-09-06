@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 
 export const Footer = () => {
   return (
-    <footer>
+    <footer className="border-t border-t-amber-100">
       {/* Social Media Section */}
       <div className="bg-zinc-900 py-4 text-amber-50">
         <div className="max-w-6xl mx-auto px-2 lg:px-6">
@@ -10,7 +10,7 @@ export const Footer = () => {
             <span className="font-light text-xs md:text-base tracking-wider heading">
               FOLLOW US
             </span>
-            <span className="font-bold max-sm:hidden">@sunasbeachclubrestaurant</span>
+            <span className="font-bold text-xs text-balance md:text-base">@sunasbeachclubrestaurant</span>
             <span className="font-light text-xs md:text-base  tracking-wider heading">
               ON INSTAGRAM
             </span>

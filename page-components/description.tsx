@@ -69,7 +69,7 @@ const Description = () => {
 
       {/* Description Text */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-16 mt-32">
-        <h2 className="text-white text-xl md:text-2xl font-light tracking-wider heading">
+        <h2 className="text-white text-2xl md:text-3xl font-light tracking-wider heading">
           GOOD FOOD + GOOD DRINKS + GOOD MUSIC + A GOOD VIEW = GREAT VIBES.
         </h2>
       </div>

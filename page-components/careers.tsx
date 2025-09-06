@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 
 const CareersSection = () => {
   return (
-    <div className="bg-zinc-800 py-16 md:py-20 text-amber-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex max-lg:flex-col gap-4 max-lg:divide-y lg:divide-x divide-zinc-600">
+    <div className="bg-zinc-800 text-amber-50">
+      <div className="w-full">
+        <div className="flex max-lg:flex-col gap-4 max-lg:divide-y lg:divide-x divide-amber-100">
           {/* Gift Cards */}
-          <div className="text-center p-6 lg:p-12">
+          <div className="text-center p-6 lg:p-20 flex flex-col grow basis-0 items-center justify-center">
             <h3 className="heading text-2xl md:text-3xl font-light mb-1 tracking-wider">
               BEACH
             </h3>
@@ -28,7 +28,7 @@ const CareersSection = () => {
           </div>
 
           {/* Careers */}
-          <div className="text-center p-4 lg:p-12">
+          <div className="text-center p-6 lg:p-20 flex flex-col grow basis-0 items-center justify-center">
             <h3 className="heading text-2xl md:text-3xl font-light mb-1 tracking-tight uppercase">
               Private party
             </h3>
