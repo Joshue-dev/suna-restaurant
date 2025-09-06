@@ -34,15 +34,20 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
         className="relative min-h-[50vh] xl:min-h-screen overflow-hidden"
       >
         {/* Hero Background Image */}
-        <motion.div
-          key={index}
-          className="absolute inset-0 bg-cover bg-center bg-zinc-900"
-          style={{ backgroundImage: `url('${images[index]}')` }}
-          transition={{
-            repeat: Infinity, // loop forever
-            repeatType: "mirror", // fade in → fade out
-          }}
-        />
+        {images.map((image, idx) => (
+          <motion.div
+            key={idx}
+            className="absolute inset-0 bg-cover bg-center bg-zinc-900"
+            style={{ backgroundImage: `url('${image}')` }}
+            animate={{
+              opacity: idx === index ? 1 : 0,
+            }}
+            transition={{
+              duration: 1.2,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
     </AnimatePresence>
   );
