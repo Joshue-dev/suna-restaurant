@@ -20,6 +20,7 @@ const Cursor = () => {
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
+  
   return (
     <motion.div
       className={`rounded-full bg-amber-200 fixed z-[99999] pointer-events-none flex items-center justify-center`}

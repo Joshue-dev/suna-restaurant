@@ -36,6 +36,7 @@ const Description = () => {
     <div
       ref={targetRef}
       className="relative bg-zinc-900 py-16 md:py-24 min-h-screen overflow-hidden"
+      data-bg='change'
     >
       {/* Description Text */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-16">

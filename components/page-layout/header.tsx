@@ -40,15 +40,24 @@ export const Header = ({
   const { scrollY } = useScroll({ target: targetRef });
 
   useEffect(() => {
-    const unsubscribe = scrollY.on("change", (latest) => {
-      if (latest > 450 && !scrolledPast) {
-        setScrolledPast(true);
-      } else if (latest <= 450 && scrolledPast) {
-        setScrolledPast(false);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setScrolledPast(!entry.isIntersecting); // true when passed
+      },
+      {
+        root: null, // viewport
+        threshold: 0, // trigger as soon as it leaves view
       }
-    });
-    return () => unsubscribe();
-  }, [scrollY, scrolledPast]);
+    );
+
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+
+    return () => {
+      if (targetRef.current) observer.unobserve(targetRef.current);
+    };
+  }, []);
 
   const navColor = showMenu || scrolledPast ? "bg-zinc-900" : "bg-transparent";
 
@@ -90,10 +99,33 @@ export const Header = ({
           </p>
           <div
             className="text-white 
-            flex items-center gap-1 font-medium tracking-wide text-lg"
+            flex items-center gap-1 font-medium tracking-wide text-lg relative"
             onClick={() => setShowMenu(!showMenu)}
           >
-            MENU
+            <motion.span
+              initial={false}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.3 }}
+              className="inline-block relative overflow-hidden"
+            >
+              <span
+                className="block transition-transform duration-300"
+                style={{
+                  transform: `translateX(${showMenu ? "-100%" : "0%"})`,
+                }}
+              >
+                MENU
+              </span>
+              <span
+                className="block absolute top-0 left-0 w-full transition-transform duration-300"
+                style={{
+                  transform: `translateX(${showMenu ? "0%" : "100%"})`,
+                }}
+              >
+                CLOSE
+              </span>
+            </motion.span>
+
             <motion.div
               key={showMenu ? "close" : "hamburger"}
               initial={{ opacity: 0, rotate: -180 }}
