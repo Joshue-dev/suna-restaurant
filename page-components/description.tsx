@@ -1,5 +1,5 @@
 "use client";
-import { animate, motion, useMotionValue, useScroll, useTransform } from "motion/react";
+import { animate, motion, useMotionValue } from "motion/react";
 import { useCallback, useRef } from "react";
 
 const photos = [
@@ -18,37 +18,44 @@ const ITEM_WIDTH = 288;
 const Description = () => {
   const targetRef = useRef(null);
   const x = useMotionValue(0);
-  
+
   const handleDragEnd = useCallback(() => {
-    const currentX = x.get()
-    const index = Math.round(-currentX/ITEM_WIDTH);
-    const clampedIndex = Math.max(0, Math.min(index, photos.length - 1))
-    const targetX = -clampedIndex * ITEM_WIDTH
+    const currentX = x.get();
+    const index = Math.round(-currentX / ITEM_WIDTH);
+    const clampedIndex = Math.max(0, Math.min(index, photos.length - 1));
+    const targetX = -clampedIndex * ITEM_WIDTH;
 
     animate(x, targetX, {
-      type: 'spring',
+      type: "spring",
       stiffness: 300,
-      damping: 30
-    })
+      damping: 30,
+    });
   }, []);
 
   return (
     <div
       ref={targetRef}
-      className="relative bg-zinc-900 py-16 md:py-24 min-h-screen overflow-hidden"
-      data-bg='change'
+      className="relative bg-zinc-900 py-16 md:py-24 overflow-hidden text-amber-50"
+      data-bg="change"
     >
-      {/* Description Text */}
-      <div className="max-w-4xl mx-auto px-6 text-center mb-16">
-        <p className="text-white text-lg md:text-xl leading-relaxed mb-8">
-          Stay until the early hours with cocktails, craft beers, bar food &
-          London's finest hi-fi sound system.
-          <br />
-          Bramble is your new go-to spot to relax and unwind after a long day.
-        </p>
+      <div className="max-w-5xl mx-auto px-6 text-center mb-16">
+        <h2 className="text-xl md:text-3xl xl:text-4xl heading uppercase font-medium">
+          With Suna's beach as your backdrop, you can take in the stunning
+          scenery of the Mediterranean and the surrounding mountains.
+        </h2>
 
-        <h2 className="text-white text-xl md:text-2xl font-light tracking-wider">
-          GOOD FOOD + GOOD DRINKS + GOOD MUSIC = GREAT VIBES.
+        <p className="text-md font-light tracking-tighter px-6 md:px-40">
+          Come and see for yourself why Suna’s Beach is the perfect getaway for
+          you, your friends, and your family. We guarantee that you’ll have an
+          unforgettable time!
+        </p>
+      </div>
+
+      {/* Description Text */}
+      <div className="max-w-4xl mx-auto px-6 text-center mb-16 mt-32">
+
+        <h2 className="text-white text-xl md:text-2xl font-light tracking-wider heading">
+          GOOD FOOD + GOOD DRINKS + GOOD MUSIC + A GOOD VIEW = GREAT VIBES.
         </h2>
       </div>
 

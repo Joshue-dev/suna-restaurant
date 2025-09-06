@@ -5,7 +5,7 @@ const Reservation = () => {
   return (
     <div className="relative bg-amber-50 py-16 md:py-24">
       {/* Repeating Header Text */}
-      <div className="absolute top-0 left-0 right-0 overflow-hidden">
+      <div className="absolute top-10 left-0 right-0 overflow-hidden">
         <motion.div
           initial={{ x: 0 }}
           animate={{ x: "-100%" }}
@@ -15,7 +15,7 @@ const Reservation = () => {
           {Array.from({ length: 20 }).map((_, i) => (
             <span
               key={i}
-              className="text-zinc-800 text-2xl font-light tracking-wider mx-8 py-4"
+              className="text-zinc-800 text-xl md:text-3xl tracking-tight mx-8 py-4 heading"
             >
               OPENING TIMES
             </span>
@@ -85,7 +85,8 @@ const Reservation = () => {
         <div className="text-center mt-12">
           <Button
             variant="outline"
-            className="border-2 border-zinc-800 bg-transparent text-zinc-800 hover:bg-zinc-800 hover:text-amber-50 font-medium tracking-wider px-8 py-3 text-base"
+            className="border-1 border-zinc-800 bg-transparent text-zinc-800 hover:bg-zinc-800 
+            hover:text-amber-50 font-medium tracking-wider px-8 py-6 text-base rounded-none"
           >
             MAKE A RESERVATION
           </Button>

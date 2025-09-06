@@ -7,4 +7,9 @@
 
 body {
   cursor: none;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.heading {
+  font-family: 'Crimson Pro', 'Times New Roman', Times, serif;
 }
