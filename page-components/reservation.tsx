@@ -54,13 +54,13 @@ const Reservation = () => {
             <img
               src="/images/cocktail.png"
               alt="Red cocktails"
-              className="size-44 object-cover transform -rotate-45"
+              className="size-32 lg:size-44 object-cover transform -rotate-45"
             />
           </div>
         </div>
 
         {/* Reservation Button */}
-        <div className="text-center">
+        <div className="text-center max-lg:mt-8">
           <Button
             variant="outline"
             className="border-1 border-zinc-800 bg-transparent text-zinc-800 hover:bg-zinc-800 

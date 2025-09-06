@@ -32,7 +32,7 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
 
   return (
     <AnimatePresence>
-      <div ref={ref} className="relative min-h-screen overflow-hidden">
+      <div ref={ref} className="relative min-h-[50vh] xl:min-h-screen overflow-hidden">
         {/* Hero Background Image */}
         <motion.div
           key={index}

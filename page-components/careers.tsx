@@ -4,9 +4,9 @@ const CareersSection = () => {
   return (
     <div className="bg-zinc-800 py-16 md:py-20 text-amber-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="flex max-lg:flex-col gap-4 max-lg:divide-y lg:divide-x divide-zinc-600">
           {/* Gift Cards */}
-          <div className="text-center border-r-0 lg:border-r border-zinc-600 lg:pr-12">
+          <div className="text-center p-6 lg:p-12">
             <h3 className="heading text-2xl md:text-3xl font-light mb-1 tracking-wider">
               BEACH
             </h3>
@@ -28,7 +28,7 @@ const CareersSection = () => {
           </div>
 
           {/* Careers */}
-          <div className="text-center lg:pl-12">
+          <div className="text-center p-4 lg:p-12">
             <h3 className="heading text-2xl md:text-3xl font-light mb-1 tracking-tight uppercase">
               Private party
             </h3>

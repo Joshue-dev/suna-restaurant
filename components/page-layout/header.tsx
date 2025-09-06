@@ -1,24 +1,7 @@
 "use client";
-import { Fragment, RefObject, useEffect, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useAnimation,
-  Variants,
-} from "motion/react";
+import { Fragment, RefObject, useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion, useAnimation } from "motion/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-
-const draw: Variants = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: {
-      pathLength: { delay: 0.5, type: "spring", duration: 1.5, bounce: 0 },
-      opacity: { delay: 0.5, duration: 0.01 },
-    },
-  },
-};
 
 const links = [
   { label: "Menus", href: "#" },
@@ -55,6 +38,23 @@ export const Header = ({
     };
   }, []);
 
+    const handleLinkClick = (href: string) => {
+    setShowMenu(false);
+    
+    // Handle smooth scrolling
+    if (href !== "#") {
+      setTimeout(() => {
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 100); // Small delay to allow menu to close first
+    }
+  };
+
   const navColor = showMenu || scrolledPast ? "bg-zinc-900" : "bg-transparent";
 
   return (
@@ -70,25 +70,33 @@ export const Header = ({
           <motion.button
             onHoverStart={() => controls.start("visible")}
             onHoverEnd={() => controls.start("hidden")}
-            className="border border-amber-50 text-amber-50 rounded-none 
+            className={`border border-amber-50 text-amber-50 rounded-none 
             text-base w-28 h-10 relative cursor-pointer hover:bg-amber-50 
-            hover:text-black transition-colors duration-100 font-medium"
+            hover:text-black transition-colors duration-100 font-medium ${showMenu ? 'max-lg:hidden' : ''}`}
           >
             RESERVE
           </motion.button>
-          <p className="uppercase max-lg:hidden text-amber-100">
-            Fevzi Çakmak Sokak, Lapta 9915
-          </p>
+          {showMenu ? (
+            <img
+              src="/images/logo.png"
+              className="size-10 md:size-16 object-contain"
+              alt="suna beach logo"
+            />
+          ) : (
+            <p className="uppercase max-lg:hidden text-amber-100">
+              Fevzi Çakmak Sokak, Lapta 9915
+            </p>
+          )}
           <div
             className="text-amber-100 flex items-center 
-            gap-1 font-medium tracking-wide text-lg relative"
+            gap-1 font-medium tracking-wide text-base relative"
             onClick={() => setShowMenu(!showMenu)}
           >
             <motion.span
               initial={false}
               animate={{ x: 0 }}
               transition={{ duration: 0.3 }}
-              className="inline-block relative overflow-hidden w-max"
+              className="inline-block relative overflow-hidden w-max max-md:hidden"
             >
               <span
                 className="block transition-transform duration-300"
@@ -129,7 +137,7 @@ export const Header = ({
         </div>
         {showMenu && (
           <Fragment>
-            <div className="flex flex-1 flex-col items-center gap-2 justify-center text-amber-100 uppercase">
+            <div className="flex flex-1 flex-col items-center gap-2 justify-center text-amber-50 uppercase heading">
               {links?.map((item, idx) => {
                 return (
                   <motion.div
@@ -143,7 +151,14 @@ export const Header = ({
                     key={idx}
                     className="relative inline-block w-fit" // Add relative positioning for the border
                   >
-                    <a href={item.href} className="text-lg font-semibold">
+                    <a
+                      href={item.href}
+                      className="text-lg md:text-2xl xl:text-3xl font-semibold"
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent default anchor behavior
+                        handleLinkClick(item.href);
+                      }}
+                    >
                       {item.label}
                     </a>
                     <motion.div
@@ -158,7 +173,10 @@ export const Header = ({
                 );
               })}
             </div>
-            <div className="flex flex-col items-center gap-1 justify-center text-amber-100 uppercase">
+            <div
+              className="flex flex-col items-center gap-1 justify-center text-amber-50 
+            uppercase heading text-base xl:text-2xl"
+            >
               <p>+90 533 846 10 10</p>
               <p>@sunasbeachclubrestaurant</p>
             </div>

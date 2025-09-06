@@ -1,35 +1,51 @@
 "use client";
-import { animate, motion, useMotionValue } from "motion/react";
-import { useCallback, useRef } from "react";
+import { animate, motion, PanInfo, useMotionValue } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const photos = [
-  { src: "/bramble-photo1.png", alt: "DJ at turntables" },
-  { src: "/bramble-photo2.png", alt: "Bartender at work" },
-  { src: "/bramble-photo3.png", alt: "Smiling bartender" },
-  { src: "/bramble-photo4.png", alt: "Cocktail preparation" },
-  { src: "/bramble-photo5.png", alt: "Customers enjoying drinks" },
-  { src: "/bramble-photo3.png", alt: "Smiling bartender" },
-  { src: "/bramble-photo4.png", alt: "Cocktail preparation" },
-  { src: "/bramble-photo5.png", alt: "Customers enjoying drinks" },
+  { src: "/images/slide-1.jpg", alt: "DJ at turntables" },
+  { src: "/images/slide-2.jpg", alt: "Bartender at work" },
+  { src: "/images/slide-3.jpg", alt: "Smiling bartender" },
+  { src: "/images/slide-4.jpg", alt: "Cocktail preparation" },
+  { src: "/images/slide-5.jpg", alt: "Customers enjoying drinks" },
+  { src: "/images/slide-6.jpg", alt: "Smiling bartender" },
 ];
 
-const ITEM_WIDTH = 288;
+const ITEM_WIDTH = 288; // card width + gap
+const TOTAL_WIDTH = photos.length * ITEM_WIDTH;
+
+// Wrap any value v into [min, max)
+const wrap = (min: number, max: number, v: number) => {
+  const range = max - min;
+  return ((((v - min) % range) + range) % range) + min;
+};
 
 const Description = () => {
-  const targetRef = useRef(null);
+  const targetRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
+  const scrollControls = useRef<{ stop: () => void }>(null);
 
-  const handleDragEnd = useCallback(() => {
-    const currentX = x.get();
-    const index = Math.round(-currentX / ITEM_WIDTH);
-    const clampedIndex = Math.max(0, Math.min(index, photos.length - 1));
-    const targetX = -clampedIndex * ITEM_WIDTH;
-
-    animate(x, targetX, {
-      type: "spring",
-      stiffness: 300,
-      damping: 30,
+  // Invisible wrap: whenever x leaves [-TOTAL_WIDTH, 0), jump it back
+  useEffect(() => {
+    return x.onChange((latest) => {
+      const wrapped = wrap(-TOTAL_WIDTH, 0, latest);
+      if (wrapped !== latest) x.set(wrapped);
     });
+  }, [x]);
+
+  const startAutoScroll = (from: number) => {
+    scrollControls.current?.stop();
+    scrollControls.current = animate(x, from - TOTAL_WIDTH, {
+      ease: "linear",
+      duration: 60,
+      repeat: Infinity,
+    });
+  };
+
+  // On mount, kick off from x=0
+  useEffect(() => {
+    startAutoScroll(0);
+    return () => scrollControls.current?.stop();
   }, []);
 
   return (
@@ -53,30 +69,40 @@ const Description = () => {
 
       {/* Description Text */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-16 mt-32">
-
         <h2 className="text-white text-xl md:text-2xl font-light tracking-wider heading">
           GOOD FOOD + GOOD DRINKS + GOOD MUSIC + A GOOD VIEW = GREAT VIBES.
         </h2>
       </div>
 
       {/* Polaroid Photo Gallery */}
-      <motion.div
-        style={{ x }}
-        drag="x"
-        onDragEnd={handleDragEnd}
-        data-cursor="drag"
-        className="flex  justify-center gap-6 px-6"
-      >
-        {photos.map((photo, index) => (
-          <div key={index} className="bg-amber-50 p-4 pb-8 shadow-lg">
-            <img
-              src={photo.src || "/placeholder.svg"}
-              alt={photo.alt}
-              className="w-64 h-80 object-cover"
-            />
-          </div>
-        ))}
-      </motion.div>
+      <div className="overflow-hidden relative select-none" data-cursor="drag">
+        <motion.div
+          className="flex gap-6 px-6 cursor-grab"
+          style={{ x }}
+          drag="x"
+          dragMomentum
+          dragElastic={0.2}
+          onDragStart={() => scrollControls.current?.stop()}
+          onDragEnd={() => {
+            const current = wrap(-TOTAL_WIDTH, 0, x.get());
+            startAutoScroll(current);
+          }}
+        >
+          {[...photos, ...photos].map((photo, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 bg-amber-100 p-4 pb-8 shadow-lg"
+              style={{ width: ITEM_WIDTH }}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="w-80 h-full object-cover"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };
