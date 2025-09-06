@@ -5,12 +5,12 @@ export const Footer = () => {
     <footer>
       {/* Social Media Section */}
       <div className="bg-zinc-900 py-4 text-amber-50">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-2 lg:px-6">
           <div className="flex items-center justify-between text-sm whitespace-nowrap gap-1">
             <span className="font-light text-xs md:text-base tracking-wider heading">
               FOLLOW US
             </span>
-            <span className="font-bold">@sunasbeachclubrestaurant</span>
+            <span className="font-bold max-sm:hidden">@sunasbeachclubrestaurant</span>
             <span className="font-light text-xs md:text-base  tracking-wider heading">
               ON INSTAGRAM
             </span>
