@@ -13,21 +13,15 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
 
   useEffect(() => {
     const controls = animate(count, images.length - 1, {
-      duration: 1, // e.g. 6s to go 0→2
+      duration: images.length, // 1 second per image
       ease: "linear",
       repeat: Infinity,
       repeatType: "loop",
+      onUpdate(v) {
+        setIndex(Math.round(v));
+      },
     });
     return () => controls.stop();
-  }, [count, images.length]);
-
-  // 3) Subscribe to count changes and update React state
-  useEffect(() => {
-    const unsubscribe = count.onChange((v) => {
-      // round or floor to pick an integer slide index
-      setIndex(Math.round(v));
-    });
-    return () => unsubscribe();
   }, [count]);
 
   useEffect(() => {
@@ -35,11 +29,14 @@ const HeroSection = forwardRef<HTMLDivElement>((_props, ref) => {
       const img = new Image();
       img.src = src;
     });
-  }, [images]);
+  }, []);
 
   return (
     <AnimatePresence>
-      <div ref={ref} className="relative min-h-[50vh] xl:min-h-screen overflow-hidden">
+      <div
+        ref={ref}
+        className="relative min-h-[50vh] xl:min-h-screen overflow-hidden"
+      >
         {/* Hero Background Image */}
         <motion.div
           key={index}
