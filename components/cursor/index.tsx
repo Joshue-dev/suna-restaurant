@@ -26,8 +26,8 @@ const Cursor = () => {
       animate={{
         x: position.x - 10,
         y: position.y - 10,
-        width: cursorText ? 80 : 40,
-        height: cursorText ? 80 : 40,
+        width: cursorText ? 80 : 20,
+        height: cursorText ? 80 : 20,
       }}
       transition={{ type: "spring", stiffness: 200, damping: 30 }}
     >
