@@ -26,14 +26,13 @@ export default function Home() {
 
   return (
     <>
-      {/* <Cursor />
+      <Cursor />
       <Header targetRef={heroRef} />
       <HeroSection ref={heroRef} />
       <Description />
       <Reservation />
       <CareersSection />
-      <Footer /> */}
-      Currently down
+      <Footer />
     </>
   );
 }
